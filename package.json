@@ -3,10 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start": "npm run start:dev",
+    "build": "npm run build:dev",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "start:dev": "ng serve",
+    "build:dev": "ng build --c=dev",
+    "start:prod": "ng serve --c=prod",
+    "build:prod": "ng build --c=prod"
   },
   "private": true,
   "dependencies": {
@@ -20,19 +25,37 @@
     "@angular/router": "~13.1.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "@angular/cdk": "^9.0.1",
+    "@angular/localize": "~9.0.2",
+    "@angular/material": "^9.0.1",
+    "@angular/fire": "^5.3.0",
+    "firebase": "^7.6.1",
+    "@ngrx/effects": "^8.6.0",
+    "@ngrx/entity": "^8.6.0",
+    "@ngrx/store": "^8.6.0",
+    "@ngrx/store-devtools": "^8.6.0",
+    "ngx-image-cropper": "^3.0.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.1.2",
     "@angular/cli": "~13.1.2",
     "@angular/compiler-cli": "~13.1.0",
+    "@angular/language-service": "~9.1.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.10.0",
+    "@types/jasminewd2": "~2.0.3",
+    "jasmine-spec-reporter": "~4.2.1",
+    "codelyzer": "^5.1.2",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
+    "protractor": "~5.4.3",
+    "ts-node": "~8.3.0",
+    "ngrx-store-freeze": "^0.2.4",
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.5.2"
   }
