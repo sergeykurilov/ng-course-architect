@@ -9,12 +9,27 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '@src/environments/environment';
+import { HeaderComponent } from './components/header/header.component';
+import {Routes} from "@angular/router";
 
+
+const routes: Routes = [
+  {
+    path: '',
+    children: [
+      {
+        path: 'demo',
+        loadChildren: () => import('./pages/demo/demo.module').then(m => m.DemoModule)
+      }
+    ],
+  }
+]
 
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        HeaderComponent
     ],
     imports: [
         BrowserModule,
