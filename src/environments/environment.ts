@@ -7,13 +7,12 @@ export const environment = {
     name: 'default',
     firebase: {
         config: {
-            apiKey: 'AIzaSyDm42gvMrleyMqeFBie8RDL6Y6YEY4gq5w',
-            authDomain: 'courseapp-3cbec.firebaseapp.com',
-            databaseURL: 'https://courseapp-3cbec.firebaseio.com',
-            projectId: 'courseapp-3cbec',
-            storageBucket: 'courseapp-3cbec.appspot.com',
-            messagingSenderId: '180836863766',
-            appId: '1:180836863766:web:6851bd302ae3ed12beca37'
+          apiKey: "AIzaSyDE8LhvwrCi10NxyLclBHl1CAFHpJLPfII",
+          authDomain: "courseapp-57499.firebaseapp.com",
+          projectId: "courseapp-57499",
+          storageBucket: "courseapp-57499.appspot.com",
+          messagingSenderId: "127214915885",
+          appId: "1:127214915885:web:dbbaf1875bf9a5573603a4"
         }
     }
 };
