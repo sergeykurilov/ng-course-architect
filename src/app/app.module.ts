@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '@src/environments/environment';
 import { HeaderComponent } from './components/header/header.component';
-import {Routes} from "@angular/router";
+import {RouterModule, Routes} from "@angular/router";
 
 
 const routes: Routes = [
@@ -20,7 +20,7 @@ const routes: Routes = [
       {
         path: 'demo',
         loadChildren: () => import('./pages/demo/demo.module').then(m => m.DemoModule)
-      }
+      },
     ],
   }
 ]
@@ -34,6 +34,7 @@ const routes: Routes = [
     imports: [
         BrowserModule,
         AppRoutingModule,
+        RouterModule.forRoot(routes),
         AngularFireModule.initializeApp(environment.firebase.config),
         AngularFirestoreModule,
         AngularFireAuthModule,

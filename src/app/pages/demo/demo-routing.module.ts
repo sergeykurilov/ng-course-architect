@@ -4,7 +4,17 @@ import {DemoComponent} from "@src/app/pages/demo/demo.component";
 
 const routes: Routes = [
   {
-    path: '', component: DemoComponent
+    path: '', component: DemoComponent,
+    children: [
+      {
+        path: 'styles',
+        loadChildren: () => import('./pages/styles/styles.module').then(m => m.StylesModule)
+      },
+      {
+        path: 'shared',
+        loadChildren: () => import('./pages/shared/shared.module').then(m => m.SharedModule)
+      }
+    ]
   }
 ];
 
