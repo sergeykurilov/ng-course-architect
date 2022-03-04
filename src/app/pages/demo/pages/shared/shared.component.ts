@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-shared',
@@ -9,12 +9,19 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class SharedComponent implements OnInit {
 
   form: FormGroup | any;
+  isInline: boolean;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      input: [null]
+      input: [null, {
+        updateOn: 'blur',
+        validators: [
+          Validators.required,
+          Validators.minLength(3)
+        ]
+      }]
     })
   }
 
@@ -24,6 +31,10 @@ export class SharedComponent implements OnInit {
 
   onSubmit(): void {
     console.log('Submit')
+  }
+
+  onToggleInline(): void {
+    this.isInline = !this.isInline;
   }
 
 }
