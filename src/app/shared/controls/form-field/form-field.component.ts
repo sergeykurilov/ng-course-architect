@@ -12,6 +12,7 @@ export class FormFieldComponent implements OnInit {
   @Input() required: boolean;
   @Input() isInline: boolean;
   @Input() control: AbstractControl;
+  @Input() patternError: string;
 
 
   constructor() {

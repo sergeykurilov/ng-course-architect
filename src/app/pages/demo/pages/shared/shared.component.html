@@ -1,7 +1,5 @@
 <h2>Form</h2>
 
-<app-button (click)="onPatchValue()">Patch Value</app-button>
-
 <form [formGroup]="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()" >
   <app-button (click)="onPatchValue()">Path Value</app-button>
   <app-button (click)="onToggleInline()">Toggle Inline</app-button>
@@ -12,8 +10,18 @@
     [required]="true"
     [control]="form.controls.input"
     [isInline]="isInline"
+    [patternError]="regexErrors.numbers"
   >
     <app-input formControlName="input"></app-input>
+  </app-form-field>
+
+  <app-form-field
+    label="Password"
+    [required]="true"
+    [control]="form.controls.password"
+    [isInline]="isInline"
+  >
+    <app-password formControlName="password"></app-password>
   </app-form-field>
 </form>
 
