@@ -26,7 +26,7 @@ export class CheckboxesComponent implements OnInit, ControlValueAccessor {
   ngOnInit(): void {
   }
 
-  private propagateChange() {
+  private propagateChange(selected: Value[]) {
   }
 
   registerOnChange(fn: any): void {
