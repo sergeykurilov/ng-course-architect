@@ -23,6 +23,29 @@
   >
     <app-password formControlName="password"></app-password>
   </app-form-field>
+
+  <app-form-field
+    label="Select"
+    [required]="true"
+    [control]="form.controls.select"
+    [isInline]="isInline"
+  >
+    <app-select formControlName="select" [items]="items">
+    </app-select>
+  </app-form-field>
+
+  <app-form-field
+    label="Checkboxes"
+    [required]="true"
+    [control]="form.controls.checkboxes"
+    [isInline]="isInline"
+  >
+    <app-checkboxes
+      formControlName="checkboxes"
+      [items]="items"
+    >
+    </app-checkboxes>
+  </app-form-field>
 </form>
 
 

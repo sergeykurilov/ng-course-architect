@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { environment } from '@src/environments/environment';
 import { HeaderComponent } from './components/header/header.component';
 import {RouterModule, Routes} from "@angular/router";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         AppRoutingModule,
         RouterModule.forRoot(routes),
         AngularFireModule.initializeApp(environment.firebase.config),
