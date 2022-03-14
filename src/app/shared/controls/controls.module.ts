@@ -6,8 +6,9 @@ import {FormFieldModule} from "@src/app/shared/controls/form-field/form-field.mo
 import {PasswordModule} from "@src/app/shared/controls/password/password.module";
 import {SelectModule} from "@src/app/shared/controls/select/select.module";
 import {CheckboxesModule} from "@src/app/shared/controls/checkboxes/checkboxes.module";
+import { RadiosModule } from '@src/app/shared';
 
-
+ 
 
 @NgModule({
   declarations: [],
@@ -17,7 +18,8 @@ import {CheckboxesModule} from "@src/app/shared/controls/checkboxes/checkboxes.m
     FormsModule,
     FormFieldModule,
     PasswordModule,
-    SelectModule
+    SelectModule,
+    RadiosModule,
   ],
   exports:
     [
@@ -25,7 +27,8 @@ import {CheckboxesModule} from "@src/app/shared/controls/checkboxes/checkboxes.m
       CheckboxesModule,
       FormFieldModule,
       PasswordModule,
-      SelectModule
+      SelectModule,
+      RadiosModule
     ]
 })
 export class ControlsModule { }
