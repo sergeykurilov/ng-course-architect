@@ -41,7 +41,7 @@ export class CheckboxesComponent implements OnInit, ControlValueAccessor {
 
   onChanged(value: Value, checked: boolean): void {
     const selected = this.getSelected(value, checked);
-    console.log(selected)
+
     this.value = selected;
     this.propagateChange(selected);
     this.changed.emit(selected);
