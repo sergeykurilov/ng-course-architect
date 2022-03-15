@@ -10,6 +10,7 @@ import {CheckboxesModule} from "@src/app/shared/controls/checkboxes/checkboxes.m
 import {DateModule} from "@src/app/shared/controls/date/date.module";
 import {RadiosModule} from "@src/app/shared/controls/radios/radios.module";
 import {DateRangeModule} from "@src/app/shared/controls/date-range/date-range.module";
+import { AutocompleteModule } from './autocomplete/autocomplete.module';
 
 
 
@@ -24,7 +25,8 @@ import {DateRangeModule} from "@src/app/shared/controls/date-range/date-range.mo
     SelectModule,
     DateModule,
     RadiosModule,
-    DateRangeModule
+    DateRangeModule,
+    AutocompleteModule,
   ],
   exports:
     [
@@ -35,7 +37,8 @@ import {DateRangeModule} from "@src/app/shared/controls/date-range/date-range.mo
       SelectModule,
       DateModule,
       RadiosModule,
-      DateRangeModule
+      DateRangeModule,
+      AutocompleteModule
     ]
 })
 export class ControlsModule { }
