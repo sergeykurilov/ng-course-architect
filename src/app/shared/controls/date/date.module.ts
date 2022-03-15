@@ -9,7 +9,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
   ],
   imports: [
     CommonModule,
-    MatDatepickerModule,
+    MatDatepickerModule
   ],
   exports: [
     DateComponent

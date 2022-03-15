@@ -9,6 +9,7 @@ import {CheckboxesModule} from "@src/app/shared/controls/checkboxes/checkboxes.m
 // import { RadiosModule } from '@src/app/shared';
 import {DateModule} from "@src/app/shared/controls/date/date.module";
 import {RadiosModule} from "@src/app/shared/controls/radios/radios.module";
+import {DateRangeModule} from "@src/app/shared/controls/date-range/date-range.module";
 
 
 
@@ -22,7 +23,8 @@ import {RadiosModule} from "@src/app/shared/controls/radios/radios.module";
     PasswordModule,
     SelectModule,
     DateModule,
-    RadiosModule
+    RadiosModule,
+    DateRangeModule
   ],
   exports:
     [
@@ -32,7 +34,8 @@ import {RadiosModule} from "@src/app/shared/controls/radios/radios.module";
       PasswordModule,
       SelectModule,
       DateModule,
-      RadiosModule
+      RadiosModule,
+      DateRangeModule
     ]
 })
 export class ControlsModule { }

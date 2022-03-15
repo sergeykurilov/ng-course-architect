@@ -12,10 +12,7 @@
     [min]="min"
     [max]="max"
     placeholder="{{ placeholder || 'Choose a date'}}">
-  <mat-datepicker-toggle
-    matSuffix
-    [for]="picker"
-  >
+  <mat-datepicker-toggle matSuffix [for]="picker" [disabled]="isDisabled">
   </mat-datepicker-toggle>
   <mat-datepicker #picker (closed)="onClosed()"></mat-datepicker>
 </div>
