@@ -6,9 +6,11 @@ import {FormFieldModule} from "@src/app/shared/controls/form-field/form-field.mo
 import {PasswordModule} from "@src/app/shared/controls/password/password.module";
 import {SelectModule} from "@src/app/shared/controls/select/select.module";
 import {CheckboxesModule} from "@src/app/shared/controls/checkboxes/checkboxes.module";
-import { RadiosModule } from '@src/app/shared';
+// import { RadiosModule } from '@src/app/shared';
+import {DateModule} from "@src/app/shared/controls/date/date.module";
+import {RadiosModule} from "@src/app/shared/controls/radios/radios.module";
 
- 
+
 
 @NgModule({
   declarations: [],
@@ -19,7 +21,8 @@ import { RadiosModule } from '@src/app/shared';
     FormFieldModule,
     PasswordModule,
     SelectModule,
-    RadiosModule,
+    DateModule,
+    RadiosModule
   ],
   exports:
     [
@@ -28,6 +31,7 @@ import { RadiosModule } from '@src/app/shared';
       FormFieldModule,
       PasswordModule,
       SelectModule,
+      DateModule,
       RadiosModule
     ]
 })
