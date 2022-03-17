@@ -1,14 +1,14 @@
-import {ActionReducer} from "@ngrx/store";
+import { ActionReducerMap } from '@ngrx/store';
+import * as fromDictionaries from './dictionaries';
 
 export interface State {
-  dictionaries: any;
+  dictionaries: fromDictionaries.DictionariesState;
 }
 
+export const reducers: ActionReducerMap<State, fromDictionaries.All> = {
+  dictionaries: fromDictionaries.reducer,
+};
 
-// @ts-ignore
-export const reducers: ActionReducer<Map<State>> = {
-}
-
-// @ts-ignore
 export const effects = [
+  fromDictionaries.DictionariesEffect
 ];
