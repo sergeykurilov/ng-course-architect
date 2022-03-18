@@ -10,5 +10,5 @@ export const reducers: ActionReducerMap<State, fromDictionaries.All> = {
 };
 
 export const effects = [
-  fromDictionaries.DictionariesEffect
+  fromDictionaries.DictionariesEffects
 ];

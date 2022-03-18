@@ -7,8 +7,8 @@ import { Observable, of, zip } from 'rxjs';
 import { map, switchMap, catchError, take } from 'rxjs/operators';
 
 import { Dictionaries, Dictionary, Item, ControlItem } from './dictionaries.models';
-
 import * as fromActions from './dictionaries.actions';
+import * as jsonCountries from '@src/assets/countries.json';
 
 
 type Action = fromActions.All;
@@ -34,7 +34,7 @@ const addDictionary = (items: Item[]): Dictionary => ({
 });
 
 @Injectable()
-export class DictionariesEffect{
+export class DictionariesEffects {
 
   constructor(
     private actions: Actions,
@@ -47,6 +47,7 @@ export class DictionariesEffect{
   read: Observable<Action> = this.actions.pipe(
     ofType(fromActions.Types.READ),
     switchMap(() => {
+
 
       return zip(
         this.afs.collection('roles').snapshotChanges().pipe(
@@ -65,13 +66,23 @@ export class DictionariesEffect{
           take(1),
           map(items => items.map(x => documentToItem(x)))
         ),
+        of((jsonCountries as any).default.map((country: { code: string; name: any; }) => ({
+            id: country.code.toUpperCase(),
+            name: country.name,
+            icon: {
+              src: '',
+              cssClass: 'fflag fflag-' + country.code.toUpperCase()
+            }
+          })
+        ))
       ).pipe(
-        map(([roles, specializations, qualifications, skills]) => {
+        map(([roles, specializations, qualifications, skills, countries]) => {
           const dictionaries: Dictionaries = {
             roles: addDictionary(roles),
             specializations: addDictionary(specializations),
             qualifications: addDictionary(qualifications),
-            skills: addDictionary(skills)
+            skills: addDictionary(skills),
+            countries: addDictionary(countries)
           };
           return new fromActions.ReadSuccess(dictionaries);
         }),

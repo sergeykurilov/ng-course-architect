@@ -1,8 +1,7 @@
-import {Icon} from "../icon";
+import { Icon } from '../icon';
 
 export interface Item {
-  id: string,
-  name: string,
-  icon?: Icon
+  id: string;
+  name: string;
+  icon?: Icon;
 }
-
