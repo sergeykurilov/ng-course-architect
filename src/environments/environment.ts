@@ -13,6 +13,10 @@ export const environment = {
           storageBucket: "courseapp-57499.appspot.com",
           messagingSenderId: "127214915885",
           appId: "1:127214915885:web:dbbaf1875bf9a5573603a4"
+        },
+        actionCodeSettings: {
+          url: 'http://localhost:5200/demo',
+          handleCodeInApp: true
         }
     }
 };
