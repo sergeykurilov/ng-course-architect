@@ -41,6 +41,11 @@ export class FilesUploadComponent implements OnInit {
       return;
     }
 
+    if(this.data.crop && files.length === 1 && files.item(0).type.split('/')[0] === 'image') {
+      this.imageFile = files.item(0);
+      return;
+    }
+
     for(let i = 0; i < files.length; i++){
       this.files.push(files.item(i));
     }
@@ -51,5 +56,18 @@ export class FilesUploadComponent implements OnInit {
 
   onUploadComplete(url: string): void {
     this.filesURL.push(url);
+  }
+
+  onClose(): void {
+    const res = this.data.multiple ? this.filesURL : this.filesURL[0];
+    this.dialogRef.close(res);
+  }
+
+  onComplete(): void {
+    this.dialogRef.close();
+  }
+
+  onCrop($event: File) {
+    
   }
 }

@@ -125,4 +125,8 @@ export class SharedComponent implements OnInit {
   onError() {
     this.notification.error('Oops! Something went wrong...😢😢😢')
   }
+
+  onFilesChanged(urls: string | string[]) {
+    console.log('urls = ' + urls);
+  }
 }
