@@ -6,6 +6,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {ImageCropperModule} from "ngx-image-cropper";
 import { DropZoneDirective } from './directives/drop-zone/drop-zone.directive';
 import { UploadComponent } from './components/upload/upload.component';
+import {FileSizePipe} from './components/upload/filesize.pipe';
 
 
 
@@ -14,7 +15,8 @@ import { UploadComponent } from './components/upload/upload.component';
     FilesUploadComponent,
     FilesUploadDirective,
     DropZoneDirective,
-    UploadComponent
+    UploadComponent,
+    FileSizePipe
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { UploadComponent } from './components/upload/upload.component';
     ImageCropperModule
   ],
   exports: [
-    FilesUploadDirective
+    FilesUploadDirective,
+    FileSizePipe
   ]
 })
 export class FilesUploadModule { }

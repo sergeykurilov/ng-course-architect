@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/storage";
-import {finalize, lastValueFrom, Observable, Subject, takeUntil} from "rxjs";
+import {finalize, Observable, Subject, takeUntil} from "rxjs";
 import * as firebase from "firebase";
 
 @Component({
@@ -17,7 +17,7 @@ export class UploadComponent implements OnInit, OnDestroy {
   task: AngularFireUploadTask;
 
   percentage$: Observable<number>;
-  snapshots$: Observable<firebase.storage.UploadTaskSnapshot>;
+  snapshot$: Observable<firebase.storage.UploadTaskSnapshot>;
   downloadURL: string;
 
   private destroy = new Subject<void>();
@@ -41,12 +41,12 @@ export class UploadComponent implements OnInit, OnDestroy {
     this.task = this.storage.upload(path, this.file);
 
     this.percentage$ = this.task.percentageChanges();
-    this.snapshots$ = this.task.snapshotChanges();
+    this.snapshot$ = this.task.snapshotChanges();
 
-    this.snapshots$.pipe(
+    this.snapshot$.pipe(
       takeUntil(this.destroy),
       finalize(async () => {
-        this.downloadURL = await lastValueFrom(storageRef.getDownloadURL());
+        this.downloadURL = await storageRef.getDownloadURL().toPromise();
 
         this.completed.next(this.downloadURL);
       })

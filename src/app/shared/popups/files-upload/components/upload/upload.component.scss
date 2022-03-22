@@ -1,9 +1,10 @@
-@import "src/styles/colors";
+@import 'src/styles/colors';
 
 .upload {
+
   padding: 12px;
   border-radius: 4px;
-  background: rgba(0,0,0, 0.5);
+  background: rgba(0,0,0, 0.05);
   margin-top: 12px;
 
   &__progress {
@@ -13,10 +14,11 @@
     }
   }
 
-  &__info {
+  &__info{
     display: flex;
     justify-content: space-between;
   }
+
 }
 
 .button {
