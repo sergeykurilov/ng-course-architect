@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+
+export interface DialogData {
+  multiple: boolean;
+  crop: boolean;
+}
 
 @Component({
   selector: 'app-files-upload',
@@ -7,9 +13,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilesUploadComponent implements OnInit {
 
-  constructor() { }
+  isHovering: boolean;
+
+  files: File[] = [];
+  imageFile: File;
+  isError: boolean;
+
+  filesURL: string[] = [];
+
+  constructor(
+    private dialogRef: MatDialogRef<FilesUploadComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+  ) { }
 
   ngOnInit(): void {
   }
 
+  toggleHover(event: boolean): void {
+    this.isHovering = event;
+  }
+
+  onDrop(files: FileList): void {
+    this.isError = false;
+
+    if(this.data.crop && files.length > 1) {
+      this.isError = true;
+      return;
+    }
+
+    for(let i = 0; i < files.length; i++){
+      this.files.push(files.item(i));
+    }
+
+    console.log(files)
+
+  }
+
+  onUploadComplete(url: string): void {
+    this.filesURL.push(url);
+  }
 }

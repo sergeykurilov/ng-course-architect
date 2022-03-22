@@ -1,10 +1,36 @@
-import { Directive } from '@angular/core';
+import {Directive, EventEmitter, HostListener, Input, Output} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {FilesUploadComponent} from "@src/app/shared/popups/files-upload/files-upload.component";
 
 @Directive({
   selector: '[appFilesUpload]'
 })
 export class FilesUploadDirective {
 
-  constructor() { }
+  @Input() multiple: boolean;
+  @Input() crop: boolean;
+
+  @Output() changed = new EventEmitter<string | string[]>();
+
+  constructor(private dialog: MatDialog) { }
+
+  @HostListener('click', ['$event']) onClick() {
+    this.openDialog();
+  }
+
+  private openDialog(): void {
+    const dialogRef = this.dialog.open(FilesUploadComponent, {
+      width: '550px',
+      height: '550px',
+      data: {
+        multiple: this.multiple,
+        crop: this.crop,
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.changed.emit(result || null);
+    })
+  }
 
 }
