@@ -16,11 +16,11 @@ export class StepperComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.stepper.next$.pipe(takeUntil(this.destroy)).subscribe(() => {
       this.stepper.onNext();
-    })
+    });
   }
 
   ngOnDestroy() {
-    this.destroy.next({});
+    this.destroy.next(null);
     this.destroy.complete();
   }
 
@@ -61,7 +61,7 @@ export class StepperComponent implements OnInit, OnDestroy {
   }
 
   onCancel() {
-
+    this.stepper.cancel.next(null);
   }
 
 }

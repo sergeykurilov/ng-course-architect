@@ -17,6 +17,7 @@ export class StepperService {
   steps: Step[];
   activeStep: ActiveStep;
 
+
   next = new Subject<boolean>();
   next$: Observable<boolean>;
 
@@ -33,17 +34,20 @@ export class StepperService {
   check$ = this.check.asObservable();
 
   constructor() {
+
     this.next$ = this.next.asObservable().pipe(
       filter(isOk => isOk)
-    )
+    );
+
     this.complete$ = this.complete.asObservable().pipe(
       filter(isOk => isOk)
-    )
+    );
+
   }
 
   init(steps: Step[]): void {
     this.steps = steps;
-    this.activeStep = {...steps[0], index: 0}
+    this.activeStep = { ...steps[0], index: 0 };
   }
 
   onNext(): void {
