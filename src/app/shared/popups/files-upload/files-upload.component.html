@@ -51,7 +51,7 @@
         Choose only one file
       </div>
     </div>
-    <div class="files-upload__footer">
+    <div class="files-upload__footer" *ngIf="!imageFile">
       <button
         class="app-button"
         (click)="onClose()"

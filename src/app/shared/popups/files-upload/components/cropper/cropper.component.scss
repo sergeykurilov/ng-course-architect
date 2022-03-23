@@ -1,0 +1,21 @@
+@import 'src/styles/colors';
+
+.cropper {
+  &__content {
+    height: 260px;
+  }
+  &__actions {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.button {
+  color: $primary;
+
+  &:hover {
+    color: $primary-dark;
+    cursor: pointer;
+  }
+}
+

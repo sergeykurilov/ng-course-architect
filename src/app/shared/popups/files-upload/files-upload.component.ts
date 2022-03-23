@@ -50,8 +50,6 @@ export class FilesUploadComponent implements OnInit {
       this.files.push(files.item(i));
     }
 
-    console.log(files)
-
   }
 
   onUploadComplete(url: string): void {
@@ -67,7 +65,8 @@ export class FilesUploadComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  onCrop($event: File) {
-    
+  onCrop(file: File): void {
+    this.imageFile = null;
+    this.files.push(file);
   }
 }

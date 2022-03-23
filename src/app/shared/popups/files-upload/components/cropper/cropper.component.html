@@ -3,8 +3,8 @@
     <image-cropper
       [imageFile]="imageFile"
       [maintainAspectRatio]="true"
-      aspectRatio="1 / 1"
-      format='jpg'
+      [aspectRatio]="1 / 1"
+      format='jpeg'
       (imageCropped)="imageCropped($event)"
     >
     </image-cropper>
