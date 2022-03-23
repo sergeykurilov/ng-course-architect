@@ -6,6 +6,13 @@ import { FormComponent } from './form.component';
 import {StepperModule} from "./components";
 import { PersonalComponent } from './components/personal/personal.component';
 import { ProfessionalComponent } from './components/professional/professional.component';
+import {
+  AutocompleteModule,
+  FilesUploadModule,
+  FormFieldModule,
+  InputModule,
+  SpinnerModule
+} from "@src/app/shared";
 
 
 @NgModule({
@@ -17,6 +24,11 @@ import { ProfessionalComponent } from './components/professional/professional.co
   imports: [
     CommonModule,
     FormRoutingModule,
+    FormFieldModule,
+    InputModule,
+    AutocompleteModule,
+    FilesUploadModule,
+    SpinnerModule,
     StepperModule
   ]
 })
