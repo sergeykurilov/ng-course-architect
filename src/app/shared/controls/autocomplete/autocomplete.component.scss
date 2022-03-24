@@ -6,17 +6,17 @@
   &__options {
     position: absolute;
   }
+}
 
-  .option {
+.option {
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    width: 30px;
+    height: 30px;
     display: flex;
     align-items: center;
-
-    &__icon {
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-    }
   }
 }
 

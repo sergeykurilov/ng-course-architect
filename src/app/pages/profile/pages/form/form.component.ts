@@ -5,6 +5,7 @@ import {Observable, Subject, takeUntil} from "rxjs";
 import * as fromRoot from '@src/app/store';
 import * as fromDictionaries from '@src/app/store/dictionaries';
 import {select, Store} from "@ngrx/store";
+import {PersonalForm} from "@src/app/pages/profile/pages/form/components/personal/personal.component";
 
 @Component({
   selector: 'app-form',
@@ -31,10 +32,11 @@ export class FormComponent implements OnInit, OnDestroy  {
     this.dictionaries$ = this.store.pipe(select(fromDictionaries.getDictionaries));
     this.dictionariesIsReady$ = this.store.pipe(select(fromDictionaries.getIsReady));
 
+
     this.stepper.init([
-      { key: 'personal', label: 'Personal' },
       { key: 'professional', label: 'Professional' },
-    ])
+      { key: 'personal', label: 'Personal' },
+    ]);
     this.stepper.complete$.pipe(takeUntil(this.destroy)).subscribe(() => {
       console.log('complete')
     })
@@ -45,5 +47,9 @@ export class FormComponent implements OnInit, OnDestroy  {
   ngOnDestroy() {
     this.destroy.next(null);
     this.destroy.complete();
+  }
+
+  onChangedPersonal(data: PersonalForm): void {
+    console.log('personal changed = ', data)
   }
 }

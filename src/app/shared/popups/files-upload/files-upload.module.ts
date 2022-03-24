@@ -25,9 +25,10 @@ import { CropperComponent } from './components/cropper/cropper.component';
     MatDialogModule,
     ImageCropperModule
   ],
-  exports: [
-    FilesUploadDirective,
-    FileSizePipe
-  ]
+    exports: [
+        FilesUploadDirective,
+        FileSizePipe,
+        FilesUploadComponent
+    ]
 })
 export class FilesUploadModule { }

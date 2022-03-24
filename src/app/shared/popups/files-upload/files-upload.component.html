@@ -15,12 +15,10 @@
           <div class="dropzone__file">
             <label class="file">
               <input
-                type="text"
                 class="file__input"
                 [multiple]="data.multiple"
                 type="file"
                 (change)="onDrop($any($event).target.files)"
-
               >
               <span class="file__label">choose</span>
             </label>
@@ -55,14 +53,14 @@
       <button
         class="app-button"
         (click)="onClose()"
-        *ngIf="!filesURL.length"
+        *ngIf="!filesURLs.length"
       >
         Close
       </button>
       <button
         class="app-button"
         (click)="onComplete()"
-        *ngIf="filesURL.length"
+        *ngIf="filesURLs.length"
       >
         Complete
       </button>
