@@ -8,20 +8,28 @@ import { PersonalComponent } from './components/personal/personal.component';
 import { ProfessionalComponent } from './components/professional/professional.component';
 import {
   AutocompleteModule,
+  CheckboxesModule,
+  DateRangeModule,
   FilesUploadModule,
   FormFieldModule,
   InputModule,
+  RadiosModule,
+  SelectModule,
   SpinnerModule,
   UserPhotoModule
 } from "@src/app/shared";
 import { ReactiveFormsModule } from '@angular/forms';
+import {EmployeeComponent,
+  RecruiterComponent} from "@src/app/pages/profile/pages/form/components/professional/roles";
 
 
 @NgModule({
   declarations: [
     FormComponent,
     PersonalComponent,
-    ProfessionalComponent
+    ProfessionalComponent,
+    EmployeeComponent,
+    RecruiterComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +41,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     SpinnerModule,
     StepperModule,
     ReactiveFormsModule,
-    UserPhotoModule
+    UserPhotoModule,
+    RadiosModule,
+    SelectModule,
+    CheckboxesModule,
+    RadiosModule,
+    DateRangeModule
   ]
 })
 export class FormModule { }

@@ -1,0 +1,22 @@
+<form
+  [formGroup]="form"
+  novalidate
+  autocomplete="off"
+>
+  <app-form-field
+    [control]="form.controls['companyName']"
+    label="Company Name"
+    [required]="true">
+    <app-input formControlName="companyName">
+    </app-input>
+  </app-form-field>
+
+  <app-form-field
+    label="Employees Count"
+    [required]="true"
+    [control]="form.controls['employeesCount']"
+  >
+    <app-input formControlName="employeesCount">
+    </app-input>
+  </app-form-field>
+</form>

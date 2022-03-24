@@ -17,6 +17,7 @@
 
 
   &__input {
+
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -70,7 +71,7 @@
   }
 }
 
-:host-context(.form-field__error) {
+:host-context(.form-field_error) {
   .radio__checkmark {
     border: 1px solid $error;
   }

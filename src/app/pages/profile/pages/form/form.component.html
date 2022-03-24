@@ -11,6 +11,8 @@
           *ngSwitchCase="'personal'"
         ></app-personal>
         <app-professional
+          (changed)="onChangedProfessional($event)"
+          [dictionaries]="dictionaries$ | async"
           *ngSwitchCase="'professional'"
         ></app-professional>
       </ng-container>
