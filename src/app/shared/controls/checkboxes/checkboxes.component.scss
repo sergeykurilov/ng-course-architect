@@ -70,7 +70,7 @@
 }
 
 
-:host-context(.form-field__error) {
+:host-context(.form-field_error) {
   .checkbox__checkmark {
     border: 1px solid $error;
   }

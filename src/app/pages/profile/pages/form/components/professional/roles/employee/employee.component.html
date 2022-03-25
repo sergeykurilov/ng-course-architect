@@ -19,6 +19,17 @@
       formControlName="specialization"></app-select>
   </app-form-field>
   <app-form-field
+    label="Experience"
+    [required]="true"
+  >
+    <app-experiences
+      name="experiences"
+      [parent]="form"
+      [values]="value?.experiences"
+    >
+    </app-experiences>
+  </app-form-field>
+  <app-form-field
     label="Qualification"
     [required]="true"
     [control]="form.controls['qualification']"

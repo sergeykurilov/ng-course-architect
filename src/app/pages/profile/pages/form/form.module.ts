@@ -8,6 +8,7 @@ import { PersonalComponent } from './components/personal/personal.component';
 import { ProfessionalComponent } from './components/professional/professional.component';
 import {
   AutocompleteModule,
+  ButtonModule,
   CheckboxesModule,
   DateRangeModule,
   FilesUploadModule,
@@ -21,7 +22,7 @@ import {
 import { ReactiveFormsModule } from '@angular/forms';
 import {EmployeeComponent,
   RecruiterComponent} from "@src/app/pages/profile/pages/form/components/professional/roles";
-
+import { ExperiencesComponent } from './components/professional/roles/employee/experiences/experiences.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {EmployeeComponent,
     PersonalComponent,
     ProfessionalComponent,
     EmployeeComponent,
-    RecruiterComponent
+    RecruiterComponent,
+    ExperiencesComponent,
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,8 @@ import {EmployeeComponent,
     SelectModule,
     CheckboxesModule,
     RadiosModule,
-    DateRangeModule
+    DateRangeModule,
+    ButtonModule,
   ]
 })
 export class FormModule { }
