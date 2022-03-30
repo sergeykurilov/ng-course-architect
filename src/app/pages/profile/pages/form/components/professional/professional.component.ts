@@ -42,7 +42,8 @@ export class ProfessionalComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
-    private stepper: StepperService) { }
+    private stepper: StepperService
+  ) { }
 
   ngOnInit(): void {
 
@@ -52,8 +53,8 @@ export class ProfessionalComponent implements OnInit, OnDestroy {
           Validators.required
         ]
       }],
-      about: [null],
-    })
+      about: [null]
+    });
 
     if (this.value) {
       this.form.patchValue(this.value);
@@ -74,7 +75,7 @@ export class ProfessionalComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.destroy.next(null);
+    this.destroy.next({});
     this.destroy.complete();
   }
 

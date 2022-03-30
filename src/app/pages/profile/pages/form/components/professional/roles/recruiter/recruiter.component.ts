@@ -36,7 +36,7 @@ export class RecruiterComponent implements OnInit, OnDestroy {
           Validators.required
         ]
       }]
-    })
+    });
 
     if (this.value) {
       this.form.patchValue(this.value);
