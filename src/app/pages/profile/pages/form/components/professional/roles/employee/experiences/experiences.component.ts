@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormArray, AbstractControl, FormControl} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, FormArray} from '@angular/forms';
 
 export interface ExperienceForm {
   companyName: string;
@@ -29,9 +29,6 @@ export class ExperiencesComponent implements OnInit, OnDestroy {
     private fb: FormBuilder
   ) { }
 
-  log(param: any) {
-    console.log(param)
-  }
 
   getControls(controls: any, key: string) {
     return controls[key].controls;
@@ -90,5 +87,4 @@ export class ExperiencesComponent implements OnInit, OnDestroy {
   deleteExperience(i: number): void {
     this.form.removeAt(i);
   }
-
 }

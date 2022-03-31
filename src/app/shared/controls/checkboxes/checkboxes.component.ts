@@ -15,7 +15,7 @@ import {ControlItem, Value} from "@src/app/models/frontend";
   ]
 })
 export class CheckboxesComponent implements OnInit, ControlValueAccessor {
-  @Input() items: ControlItem[]
+  @Input() items: ControlItem[];
   @Output() changed = new EventEmitter<Value[]>();
 
   value: Value[];
@@ -26,7 +26,10 @@ export class CheckboxesComponent implements OnInit, ControlValueAccessor {
   ngOnInit(): void {
   }
 
-  private propagateChange(selected: Value[]) {
+  private propagateChange: any = () => { };
+
+  writeValue(value: Value[]): void {
+    this.value = value;
   }
 
   registerOnChange(fn: any): void {
@@ -51,21 +54,18 @@ export class CheckboxesComponent implements OnInit, ControlValueAccessor {
     const selected: Value[] = this.value ? [...this.value] : [];
 
     if(checked) {
-      if(!selected.includes(value)) {
-        selected.push(value)
+      if (!selected.includes(value)) {
+        selected.push(value);
       }
-    } else {
-      const index = selected.indexOf(value);
-      selected.splice(index, 1);
-    }
+      } else {
+        const index = selected.indexOf(value);
+        selected.splice(index, 1);
+      }
 
     return selected.length ? selected : null;
   }
 
   isChecked(value: Value): boolean {
     return this.value && this.value.includes(value);
-  }
-
-  writeValue(obj: any): void {
   }
 }

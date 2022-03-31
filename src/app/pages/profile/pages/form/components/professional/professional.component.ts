@@ -53,7 +53,11 @@ export class ProfessionalComponent implements OnInit, OnDestroy {
           Validators.required
         ]
       }],
-      about: [null]
+      about: [null, {
+        updateOn: 'change', validators: [
+          Validators.required
+        ]
+      }]
     });
 
     if (this.value) {

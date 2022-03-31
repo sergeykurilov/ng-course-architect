@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import { ControlEntities } from '@src/app/shared';
+import { ControlEntities, mapControls } from '@src/app/shared';
 import {Dictionaries} from "@src/app/store/dictionaries";
 import {
   ExperienceForm
@@ -103,10 +103,12 @@ export class EmployeeComponent implements OnInit, OnDestroy {
       this.form.patchValue(this.value);
     }
 
+    mapControls(this.controls);
+
     this.parent.addControl(this.name, this.form);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.parent.removeControl(this.name);
   }
 

@@ -7,11 +7,12 @@ import {AngularFireAuth} from "@angular/fire/auth";
 import {AngularFirestore} from "@angular/fire/firestore";
 import { Router } from '@angular/router';
 import {NotificationService} from "@src/app/services";
-import {from, Observable, of, tap} from 'rxjs';
+import {from, Observable, of, tap, withLatestFrom} from 'rxjs';
 import {catchError, map, switchMap, take} from "rxjs/operators";
 import * as fromActions from './user.actions';
 import { environment } from "@src/environments/environment";
 import { User } from "./user.models";
+import {firestore} from "firebase/app";
 type Action = fromActions.All;
 
 
@@ -110,6 +111,39 @@ export class UserEffects {
           this.notification.error(err.message);
           return of(new fromActions.SignOutError(err.message));
         })
+      )
+    })
+  )
+
+  @Effect()
+  create: Observable<Action> = this.actions.pipe(
+    ofType(fromActions.Types.CREATE),
+    map((action: fromActions.Create) => action.user),
+    withLatestFrom(this.afAuth.authState.pipe(take(1))),
+    map(([user, state]) => ({
+      ...user,
+      uid: state.uid,
+      email: state.email,
+      created: firestore.FieldValue.serverTimestamp()
+    })),
+    switchMap((user: User) => {
+      return from(this.afs.collection('users').doc(user.uid).set(user)).pipe(
+        tap(() => this.router.navigate(['/profile', user.uid])),
+        map(() => new fromActions.CreateSuccess(user)),
+        catchError(err => of(new fromActions.CreateError(err.message)))
+      )
+    })
+  )
+
+  @Effect()
+  update: Observable<Action> = this.actions.pipe(
+    ofType(fromActions.Types.UPDATE),
+    map((action: fromActions.Update) => action.user),
+    switchMap((user) => {
+      return from(this.afs.collection('users').doc(user.uid).set(user)).pipe(
+        tap(() => this.router.navigate(['/profile', user.uid])),
+        map(() => new fromActions.UpdateSuccess(user)),
+        catchError(err => of(new fromActions.UpdateError(err.message)))
       )
     })
   )

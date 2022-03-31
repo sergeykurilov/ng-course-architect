@@ -1,6 +1,7 @@
-import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import {MatDatepickerInputEvent} from "@angular/material/datepicker";
+import { Component, forwardRef, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 type Value = number;
 
@@ -14,7 +15,7 @@ type Value = number;
       useExisting: forwardRef(() => DateComponent),
       multi: true
     }
-  ],
+  ]
 })
 export class DateComponent implements OnInit, ControlValueAccessor {
 
@@ -39,8 +40,8 @@ export class DateComponent implements OnInit, ControlValueAccessor {
     return this.value ? new Date(this.value) : null;
   }
 
-  private propagateChange: any = () => {};
-  private propagateTouched: any = () => {};
+  private propagateChange: any = () => { };
+  private propagateTouched: any = () => { };
 
   writeValue(value: Value): void {
     this.value = value;
@@ -70,6 +71,5 @@ export class DateComponent implements OnInit, ControlValueAccessor {
     this.propagateTouched();
     this.closed.emit();
   }
-
 
 }
