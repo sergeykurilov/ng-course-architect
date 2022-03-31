@@ -107,7 +107,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
 
     this.parent.addControl(this.name, this.form);
   }
-
+  //forms
   ngOnDestroy(): void {
     this.parent.removeControl(this.name);
   }
