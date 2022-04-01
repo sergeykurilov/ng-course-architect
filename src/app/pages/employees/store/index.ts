@@ -1,6 +1,19 @@
+import * as fromList from './list';
+import { ListEffects } from './list/list.effects';
+import {ActionReducerMap, createFeatureSelector} from "@ngrx/store";
 
-import * as fromList from './list/list.reducer';
 
-export const EmployeeState {
-//   list: fromList.ListState
+export interface EmployeesState {
+  list: fromList.ListState;
 }
+
+
+export const reducers: ActionReducerMap<any, any> = {
+  list: fromList.reducer
+};
+
+export const effects: any[] = [
+  ListEffects
+];
+
+export const getEmployeesState = createFeatureSelector<EmployeesState>('employees');
