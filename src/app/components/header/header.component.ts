@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {User} from "@src/app/store/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -7,15 +9,24 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  @Input() user: User;
+
   @Input() isAuthorized: boolean;
   @Output() signOut = new EventEmitter<void>();
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   onSignOut(): void {
     this.signOut.emit();
+  }
+
+  onProfileNavigate(): void {
+    const path = this.user ? this.user.uid : 'new';
+    this.router.navigate(['/profile', path])
   }
 }

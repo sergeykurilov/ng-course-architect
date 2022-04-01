@@ -4,7 +4,7 @@ import * as fromRoot from './store';
 import * as fromUser from './store/user';
 import * as fromDictionaries from './store/dictionaries';
 import {select, Store} from "@ngrx/store";
-import {Observable} from "rxjs";
+import {filter, Observable, take} from "rxjs";
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
     title = 'course-app';
 
     isAuthorized$: Observable<boolean>;
+    user$: Observable<fromUser.User>
 
     constructor(
       private store: Store<fromRoot.State>
@@ -24,9 +25,15 @@ export class AppComponent implements OnInit {
         select(fromUser.getIsAuthorized)
       )
 
-
       this.store.dispatch(new fromUser.Init());
-      this.store.dispatch(new fromDictionaries.Read());
+
+      this.store.pipe(select(fromUser.getUserState))
+        .pipe(
+          filter(state => !!state.uid),
+          take(1)
+        ).subscribe(() => {
+        this.store.dispatch(new fromDictionaries.Read());
+         })
     }
 
   onSignOut(): void {

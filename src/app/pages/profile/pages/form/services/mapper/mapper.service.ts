@@ -39,10 +39,12 @@ export class MapperService {
     }
     if(user.roleId === 'recruiter') {
       const role = user.role as Recruiter;
+
       const formRole: RecruiterForm = {
         companyName: role.companyName,
         employeesCount: role.employeesCount
-      }
+      };
+
       return formRole;
     }
     return null;

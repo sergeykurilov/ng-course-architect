@@ -26,34 +26,38 @@ import { ExperiencesComponent } from './components/professional/roles/employee/e
 import {MapperService} from "@src/app/pages/profile/pages/form/services";
 
 @NgModule({
-  declarations: [
-    FormComponent,
-    PersonalComponent,
-    ProfessionalComponent,
+    declarations: [
+        FormComponent,
+        PersonalComponent,
+        ProfessionalComponent,
+        EmployeeComponent,
+        RecruiterComponent,
+        ExperiencesComponent,
+    ],
+    imports: [
+        CommonModule,
+        FormRoutingModule,
+        FormFieldModule,
+        InputModule,
+        AutocompleteModule,
+        FilesUploadModule,
+        SpinnerModule,
+        StepperModule,
+        ReactiveFormsModule,
+        UserPhotoModule,
+        RadiosModule,
+        SelectModule,
+        CheckboxesModule,
+        RadiosModule,
+        DateRangeModule,
+        ButtonModule,
+    ],
+  exports: [
     EmployeeComponent,
-    RecruiterComponent,
-    ExperiencesComponent,
+    RecruiterComponent
   ],
-  imports: [
-    CommonModule,
-    FormRoutingModule,
-    FormFieldModule,
-    InputModule,
-    AutocompleteModule,
-    FilesUploadModule,
-    SpinnerModule,
-    StepperModule,
-    ReactiveFormsModule,
-    UserPhotoModule,
-    RadiosModule,
-    SelectModule,
-    CheckboxesModule,
-    RadiosModule,
-    DateRangeModule,
-    ButtonModule,
-  ],
-  providers: [
-    MapperService,
-  ]
+    providers: [
+        MapperService,
+    ]
 })
 export class FormModule { }
