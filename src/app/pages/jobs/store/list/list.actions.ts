@@ -51,7 +51,7 @@ export class Create implements Action {
 
 
 export class CreateSuccess implements Action {
-  readonly type = Types.CREATE_ERROR;
+  readonly type = Types.CREATE_SUCCESS;
   constructor(public job: Job) {
   }
 }
