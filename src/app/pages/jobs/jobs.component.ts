@@ -1,15 +1,60 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+
+import * as fromRoot from '@src/app/store';
+import * as fromUser from '@src/app/store/user';
+import { Observable } from 'rxjs';
+import * as fromList from './store/list';
+
+import {Job} from './store/list/list.models';
+import {select, Store} from "@ngrx/store";
+import {MatDialog} from "@angular/material/dialog";
+import {FormComponent} from "./components/form/form.component";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-jobs',
   templateUrl: './jobs.component.html',
-  styleUrls: ['./jobs.component.scss']
+  styleUrls: ['./jobs.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class JobsComponent implements OnInit {
 
-  constructor() { }
+  jobs$: Observable<Job[]>;
+  isEditable$: Observable<boolean>;
+
+  constructor(
+    public dialog: MatDialog,
+    private store: Store<fromRoot.State>
+  ) { }
 
   ngOnInit(): void {
+    this.jobs$ = this.store.pipe(select(fromList.selectAll))
+    this.isEditable$ = this.store.pipe(
+      select(fromUser.getRoleId),
+      map(roleId => ['recruiter', 'employee'].includes(roleId))
+    );
+    this.store.dispatch(new fromList.Read());
+  }
+
+  onAdd(): void {
+    this.dialog.open(FormComponent, {
+      width: '650px',
+      height: '220px',
+      data: {}
+    });
+  }
+
+  onEdit(value: Job): void {
+    this.dialog.open(FormComponent, {
+      width: '650px',
+      height: '220px',
+      data: { value }
+    });
+  }
+
+
+  onDelete(id: string): void {
+    this.store.dispatch(new fromList.Delete(id));
   }
 
 }
